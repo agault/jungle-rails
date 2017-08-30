@@ -2,12 +2,41 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+
   </header>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <div><%= @order.email %></div>
+    <div>Enjoy!</div>
   </div>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Count</th>
+      <th>img</th>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @order.line_items %>
+
+  </tbody>
+</table>
+<div>
+</div>
+
+
+<div class="container">
+<div>Total $<%= @order.total_cents / 100.00 %></div>
+<div>Email  <em><%= @order.email %></em></div>
+</div>
+
+<%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
