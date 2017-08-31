@@ -134,3 +134,50 @@ cat3.products.create!({
 
 
 puts "DONE!"
+
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create!({
+  first_name: 'Tyler',
+  last_name: 'Elliot',
+  email: 'tyler@elliot.net',
+  password: 'hellohello',
+  password_confirmation: 'hellohello'
+})
+
+User.create!({
+  first_name: 'Asia',
+  last_name: 'Asia',
+  email: 'Asiab@Asia.meh',
+  password: 'hellohello',
+  password_confirmation: 'hellohello'
+})
+
+puts "FINITO!"
+
+
+## REVIEWS
+
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+Review.create!({
+  user: User.first,
+  product: Product.second,
+  rating: 5,
+  description: 'Curious....very Curious!!'
+})
+
+Review.create!({
+  user: User.second,
+  product: Product.first,
+  rating: 1,
+  description: 'Dear god why?'
+})
+
