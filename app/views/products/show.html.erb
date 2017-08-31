@@ -24,7 +24,38 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+
     </div>
+    <h4 class="new-review-head">Review this product</h4>
+      <%= form_for [@product, Review.new] do |f| %>
+
+
+            <div class="form-group rating-dropdown">
+              <%= f.label :rating %>
+              <%= select(:review, :rating, [5, 4, 3, 2, 1])%>
+            </div>
+
+            <div class="form-group">
+
+              <%= f.text_area :description, class: "form-control"%>
+            </div>
+
+            <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
+
+      <% end %>
+
+ <h4> Comments</h4>
+  <div>
+    <% @product.reviews.each do |r| %>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0"><%= r.user.first_name %></h5>
+              <div><%= r.description %></div>
+              <div><%= r.rating %></div>
+        </div>
+      </div>
+    <% end %>
+   </div>
 
   </article>
 

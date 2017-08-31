@@ -181,3 +181,10 @@ Review.create!({
   description: 'Dear god why?'
 })
 
+Review.create!({
+  user: User.first,
+  product: Product.first,
+  rating: 3,
+  description: 'Dude yasss'
+})
+
