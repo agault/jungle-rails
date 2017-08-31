@@ -43,19 +43,20 @@
             <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
 
       <% end %>
-
- <h4> Comments</h4>
-  <div>
-    <% @product.reviews.each do |r| %>
-      <div class="media">
-        <div class="media-body">
-          <h5 class="mt-0"><%= r.user.first_name %></h5>
-              <div><%= r.description %></div>
-              <div><%= r.rating %></div>
-        </div>
-      </div>
-    <% end %>
-   </div>
+      <h4>Reviews </h4>
+          <% @product.reviews.reverse.each do |r| %>
+          <div class="review">
+            <div class="review-user-name"><%= "#{r.user.first_name} #{r.user.last_name}" %>
+              <% if r.user == current_user %>
+                <%= link_to 'Delete Review', [@product, r], class: 'btn btn-xs btn-danger delete-review', method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+            <div class="review-rating">
+              <%= r.rating  %>
+            </div>
+            <div class="review-description"><%= r.description %></div>
+          </div>
+        <% end %>
 
   </article>
 
