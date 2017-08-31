@@ -81,7 +81,30 @@ main section.products-show {
     img.main-img {
       max-width: 100%;
     }
+
+  }
+
+  .container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: solid;
+    border-radius: 5px;
+    margin-top:10px;
+  }
+  .btn-xs {
+    margin-top: 10px;
+    float: right;
+  }
+  .review-user-name {
+    font-size: 18px;
+    border-bottom: 1px solid black;
+    padding:10px;
+    background-color: #FCEFEE;
+  }
+  .review-rating {
+    margin: 10px;
+  }
+  .review-description{
+    margin: 10px;
   }
 }
-
-

@@ -24,9 +24,12 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
-
     </div>
-    <h4 class="new-review-head">Review this product</h4>
+   </article>
+
+<!-- FORM FOR ADDING REVIEW-->
+
+    <h3 class="new-review-head">Review this product</h3>
       <%= form_for [@product, Review.new] do |f| %>
 
 
@@ -43,21 +46,24 @@
             <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
 
       <% end %>
+
+
+<!-- PAST REVIEWS-->
       <h4>Reviews </h4>
           <% @product.reviews.reverse.each do |r| %>
-          <div class="review">
+          <div class="container" id="box">
             <div class="review-user-name"><%= "#{r.user.first_name} #{r.user.last_name}" %>
+<!-- DELETE BUTTON FOR USER-->
               <% if r.user == current_user %>
                 <%= link_to 'Delete Review', [@product, r], class: 'btn btn-xs btn-danger delete-review', method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
             </div>
             <div class="review-rating">
-              <%= r.rating  %>
+              Rating:<%= r.rating  %>
             </div>
             <div class="review-description"><%= r.description %></div>
           </div>
         <% end %>
 
-  </article>
 
 </section>
